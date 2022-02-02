@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Class from "./Class";
-import axios from "axios";
+import axiosWithAuth from "../utils/axiosWithAuth";
 import '../styles/Classes.css'
 
 const classesInitialValues = [];
@@ -11,7 +11,8 @@ const Classes = () => {
     console.log(classes)
 
     useEffect(() => {
-        axios.get('https://anywhere-fitness-07-backend.herokuapp.com/api/classes')
+        axiosWithAuth()
+            .get('https://anywhere-fitness-07-backend.herokuapp.com/api/classes')
             .then((res) => {
                 console.log(res)
                 setClasses(res.data)

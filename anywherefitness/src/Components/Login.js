@@ -1,46 +1,71 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import ClientLogin from "./ClientLogin";
+import InstructorLogin from "./InstructorLogin";
+
 
 function Login()  {
     const [cred, setCred] = useState({});
-    // localStorage.setItem('token', 'token')
+    const [clientToggle, setClient] = useState(false);
+    const [instructorToggle, setInstructor] = useState(false);
 
-    const handleChange = (e) => {
-    setCred({
-        ...cred,
-        [e.target.name]: e.target.value
-        })
-        console.log(cred)
+    const clientLogin = credentials => {
+        axios.post(`https://anywhere-fitness-07-backend.herokuapp.com/api/auth/clients/login`, credentials)
+            .then(res => {
+                const token = res.data.token;
+                localStorage.setItem('token', token);
+                window.location.href = '/'
+            })
+            .catch(err => {
+                console.error(err);
+            });
     };
+
+    const instructorLogin = credentials => {
+        axios.post(`https://anywhere-fitness-07-backend.herokuapp.com/api/auth/instructors/login`, credentials)
+            .then(res => {
+                const token = res.data.token;
+                localStorage.setItem('token', token);
+                window.location.href = '/'
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
+
+
+    const onSubmit = evt => {
+        evt.preventDefault();
+
+    }
+
+    const clientOnClick = () => {
+        setClient(!clientToggle);
+        setInstructor(false);
+        console.log('clientOnClick: ', clientToggle);
+
+    }
+    const instOnClick = () => {
+        setInstructor(!instructorToggle);
+        setClient(false);
+        console.log('instOnClick: ', instructorToggle);
+
+    }
 
     return (
         <div>
-            <h1>Login Page</h1>
-        <form>
             <div>
-                <label
-                    htmlFor="username">
-                    Username:&nbsp;&nbsp;
-                </label>
-                <input
-                    onChange={handleChange}
-                    type="text"
-                    id="username-id"
-                    name="client_name"
-                />
+                <h2 onClick={clientOnClick}>Client Login</h2>
+                {
+                    clientToggle && <ClientLogin />
+                }
             </div>
             <div>
-                <label
-                    htmlFor="password">
-                    Password:&nbsp;&nbsp;
-                </label>
-                <input
-                    onChange={handleChange}
-                    type="text"
-                    id="password-id"
-                    name="password"
-                />
+                <h2 onClick={instOnClick}>Instructor Login</h2>
+                {
+                    instructorToggle && <InstructorLogin />
+                }
             </div>
-        </form>
         </div>
     )
 }

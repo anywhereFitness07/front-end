@@ -6,6 +6,10 @@ import Register from './Components/Register';
 import Header from "./Components/Header";
 import Home from "./Components/Home";
 import Classes from "./Components/Classes";
+import ErrorPage from "./Components/ErrorPage";
+import {
+    ClassesPrivateRoute
+} from './Components/PrivateRoute';
 
 
 function App() {
@@ -13,10 +17,14 @@ function App() {
     <div className="App">
         <Header/>
         <Routes>
+            <Route exact path='/classes' element={<ClassesPrivateRoute />}>
+                <Route path='' element={<Classes />} />
+            </Route>
             <Route path='/classes' element={<Classes/>}/>
             <Route path='/register' element={<Register/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/' element={<Home/>}/>
+            <Route path="*" element={<ErrorPage />} />
         </Routes>
     </div>
   );
