@@ -1,0 +1,79 @@
+#home {
+    text-decoration: none;
+    color: lightgray;
+}
+
+#classes {
+    text-decoration: none;
+    color: lightgray;
+}
+
+#register {
+    text-decoration: none;
+    color: lightgray;
+}
+
+#login {
+    text-decoration: none;
+    color: lightgray;
+}
+
+.header-container {
+    /*border: red 1px solid;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.header-name {
+    /*border: blue 1px solid;*/
+    margin-left: 3%;
+}
+
+.header-links {
+    width: 30%;
+    /*border: green 1px solid;*/
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 3%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
