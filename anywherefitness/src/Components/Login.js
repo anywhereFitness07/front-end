@@ -27,11 +27,17 @@ const handleSubmit = (e) => {
     console.log("this is", e)
     axios.post('https://anywhere-fitness-07-backend.herokuapp.com/api/auth/clients/register', cred)
     .then(resp => {
-        console.log(resp.data)
+        push('/dashboard')
         localStorage.setItem('token', resp.data.token)
     })
     .catch(err => {
         console.log(err)
+        setCred(prev => {
+            return {
+                ...prev,
+                error: err.response.data.error
+            }
+        })
     })
 }
 
@@ -43,15 +49,16 @@ return (
     <form onSubmit={handleSubmit}>
     <div>
         <label htmlFor="client_name">Username: </label>
-        <input onChange={handleChange} type="text" id="id" name="client_name"/>
+        <input onChange={handleChange} type="text" id="username" name="client_name"/>
     </div>
     <div>
         <label htmlFor="password">Password: </label>
-        <input onChange={handleChange} type="password" id="id" name="password"/>
+        <input onChange={handleChange} type="password" id="password" name="password"/>
     </div>
     <button>login</button>
     </form>
     <h3>Dont have an account?</h3>
+    <p>{cred.error}</p>
 <button onClick={send}>Register now!</button>
     </div>
 )
