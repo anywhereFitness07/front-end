@@ -11,6 +11,7 @@ import {
     ClassesPrivateRoute
 } from './Components/PrivateRoute';
 
+// TODO: We need to think about how you want to handle clients making a reservation for a class
 
 function App() {
   return (

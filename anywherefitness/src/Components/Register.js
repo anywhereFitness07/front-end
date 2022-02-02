@@ -43,11 +43,7 @@ function Register() {
         } else {
             return alert("error")
         }
-    }
-    
-
-
-
+    };
 
     return (
         <div>
@@ -89,4 +85,4 @@ function Register() {
     )
 }
 
-export default Register
+export default Register;

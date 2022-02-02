@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
 
 
@@ -9,17 +9,6 @@ const initialValues = {
 
 const InstructorLogin = props => {
     const [values, setValues] = useState(initialValues);
-
-    useEffect(() => {
-        axios.get(`https://anywhere-fitness-07-backend.herokuapp.com/api/auth/instructors`)
-            .then(res => {
-                console.log(res.data)
-            })
-            .catch(err => {
-                console.error(err);
-            })
-
-    },[])
 
     const instructorLogin = credentials => {
         axios.post(`https://anywhere-fitness-07-backend.herokuapp.com/api/auth/instructors/login`, credentials)
@@ -47,7 +36,6 @@ const InstructorLogin = props => {
         evt.preventDefault();
         instructorLogin(values);
     };
-
 
     return (
         <div>

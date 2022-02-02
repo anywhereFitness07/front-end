@@ -3,12 +3,11 @@ import Class from "./Class";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import '../styles/Classes.css'
 
-const classesInitialValues = [];
 
+const classesInitialValues = [];
 
 const Classes = () => {
     const [classes, setClasses] = useState(classesInitialValues);
-    console.log(classes)
 
     useEffect(() => {
         axiosWithAuth()
@@ -20,9 +19,7 @@ const Classes = () => {
             .catch(err => {
                 console.error(err);
             })
-
-    }, [])
-
+    }, []);
 
     return (
     <div className='classes-container'>

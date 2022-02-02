@@ -6,7 +6,6 @@ import '../styles/Header.css'
 const Header = () => {
     const token = localStorage.getItem('token');
 
-
     return (
         <div className='header-container'>
             <div className='header-name'>
@@ -17,10 +16,6 @@ const Header = () => {
                 {token && <Link id='classes' to='/classes'>Classes</Link>}
                 {!token && <Link id='login' to='/login'>Login</Link>}
                 {!token && <Link id='register' to='/register'>Signup</Link>}
-
-
-
-
             </nav>
         </div>
     );

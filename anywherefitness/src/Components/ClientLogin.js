@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from "axios";
 
 const initialValues = {
     client_name: '',
@@ -7,7 +8,24 @@ const initialValues = {
 
 const ClientLogin = props => {
     const {} = props;
-    const [values, setValues] = useState(initialValues)
+    const [values, setValues] = useState(initialValues);
+
+    const clientLogin = credentials => {
+        axios.post(`https://anywhere-fitness-07-backend.herokuapp.com/api/auth/clients/login`, credentials)
+            .then(res => {
+                const token = res.data.token;
+                localStorage.setItem('token', token);
+                window.location.href = '/'
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
+
+    const onSubmit = evt => {
+        evt.preventDefault();
+        clientLogin(values)
+    };
 
     const onChange = evt => {
         const name = evt.target.name;
@@ -18,7 +36,6 @@ const ClientLogin = props => {
         });
     };
 
-
     return (
         <div>
             <div>
@@ -26,18 +43,18 @@ const ClientLogin = props => {
             </div>
             <form>
                 <div>
-                    <label>Client Name:&nbsp;&nbsp;</label>
+                    <label onSubmit={onSubmit}>Client Name:&nbsp;&nbsp;</label>
                     <input
                         onChange={onChange}
                         type="text"
-                        id="username-id"
                         name="client_name"
+                        value={values.client_name}
                     />&nbsp;&nbsp;
                     <label>Password:&nbsp;&nbsp;</label>
                     <input
                         onChange={onChange}
                         type="text"
-                        id="password-id"
+                        value={values.password}
                         name="password"
                     />
                 </div>
