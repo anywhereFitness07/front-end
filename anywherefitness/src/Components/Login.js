@@ -57,8 +57,8 @@ return (
     </div>
     <button>login</button>
     </form>
-    <h3>Dont have an account?</h3>
     <p>{cred.error}</p>
+    <h3>Dont have an account?</h3>
 <button onClick={send}>Register now!</button>
     </div>
 )
