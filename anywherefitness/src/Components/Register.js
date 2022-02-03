@@ -53,18 +53,16 @@ function Register() {
                 <div className='form-inputs'>
                     <label>Name:&nbsp;&nbsp;</label>
                     <input
-                        id='username'
-                        name='username'
                         type='text'
+                        name='username'
                         value={values.username}
                         onChange={handleChange}
                     />
                     <br/>
                     <label>Password:&nbsp;&nbsp;</label>
                     <input
-                        id='password'
-                        name='password'
                         type='password'
+                        name='password'
                         value={values.password}
                         onChange={handleChange}
                     />

@@ -18,6 +18,11 @@
     color: lightgray;
 }
 
+#logout {
+    text-decoration: none;
+    color: lightgray;
+}
+
 .header-container {
     /*border: red 1px solid;*/
     display: flex;
