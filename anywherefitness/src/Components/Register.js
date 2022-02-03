@@ -14,6 +14,7 @@ function Register() {
     const navigate = useNavigate();
 
     const handleChange = e => {
+
         setValues({
             ...values,
             [e.target.name]: e.target.value
@@ -52,8 +53,8 @@ function Register() {
                 <div className='form-inputs'>
                     <label>Name:&nbsp;&nbsp;</label>
                     <input
-                        id='client_name'
-                        name='client_name'
+                        id='username'
+                        name='username'
                         type='text'
                         value={values.username}
                         onChange={handleChange}
