@@ -14,6 +14,7 @@ function Register() {
     const navigate = useNavigate();
 
     const handleChange = e => {
+
         setValues({
             ...values,
             [e.target.name]: e.target.value

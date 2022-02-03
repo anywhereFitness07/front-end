@@ -9,7 +9,7 @@ function Login()  {
 
     const clientOnClick = () => {
         setClient(!clientToggle);
-        setInstructor(false);
+        setInstructor(false)
     };
 
     const instOnClick = () => {
